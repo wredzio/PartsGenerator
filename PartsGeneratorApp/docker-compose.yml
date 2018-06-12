@@ -1,0 +1,17 @@
+version: '3'
+
+services:       
+  application-db:
+    image: postgres
+    restart: always
+    volumes:
+      - postgres_application:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: application-db-pass
+      POSTGRES_USER: application-db
+    ports:
+      - "48010:5432"
+    
+volumes:
+  postgres_application:
+    driver: "local"

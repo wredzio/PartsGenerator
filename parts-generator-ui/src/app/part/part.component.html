@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <ng-container *ngIf="parts$ | async as parts; else loading">
+    <div *ngFor="let part of parts" class="offset-3 col-6 text-center border p-3 mt-1">
+      <span class="pr-4">{{part}}</span>
+    </div>
+  </ng-container>
+  <div class="row">
+    <div class="offset-2 col-8 pt-3 text-center">
+      <form [formGroup]="partForm" (ngSubmit)="addNew()">
+        <div class="row">
+          <div class="col-3">
+            <input type="text" formControlName="categoryCode" class="form-control" placeholder="Category Code">
+          </div>
+          <div class="col-3">
+            <input type="text" formControlName="factoryCode" class="form-control" placeholder="Factory Code">
+          </div>
+          <div class="col-3">
+            <input type="text" formControlName="country" class="form-control" placeholder="Country">
+          </div>
+          <button class="col-3 btn btn-success" type="submit">Add new Part</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <ng-template #loading>
+    Loading Parts...
+  </ng-template>
+</div>
